@@ -49,7 +49,7 @@ async def get_movies_list(
     if not movies:
         raise HTTPException(status_code=404, detail="No movies found.")
 
-    base_path = "/api/v1/movies/"
+    base_path = "/theater/movies/"
 
     return MoviesListResponseSchema(
         movies=[MovieListItemSchema.model_validate(m) for m in movies],
