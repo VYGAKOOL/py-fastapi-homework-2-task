@@ -95,12 +95,10 @@ class MoviesListResponseSchema(BaseModel):
 
 
 class MovieUpdateSchema(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
-    name: str | None = None
-    date: datetime.date | None = None
-    score: float | None = None
-    overview: str | None = None
-    status: MovieStatusEnum | None = None
-    budget: float | None = None
-    revenue: float | None = None
+    name: Optional[str] = Field(default=None, max_length=255)
+    date: Optional[date] = None
+    score: Optional[float] = Field(default=None, ge=0, le=100)
+    overview: Optional[str] = None
+    status: Optional[str] = None
+    budget: Optional[float] = Field(default=None, ge=0)
+    revenue: Optional[float] = Field(default=None, ge=0)
